@@ -21,13 +21,24 @@ android {
     }
 
     buildTypes {
-        release {
+        getByName("release") {
             isMinifyEnabled = false
+            isDebuggable = false //Si subo mi app y alguien se mete en el codigo no va a poder hacer debug
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+            resValue("string", "facuname", "HoroscApp")
+
+            buildConfigField("String", "BASE_URL", "\"https://newastro.vercel.app/\"") //Sin \ al final se rompe
         }
+        getByName("debug"){
+            isDebuggable = true
+            resValue("string", "facuname", "[DEBUG] HoroscApp")
+            buildConfigField("String", "BASE_URL", "\"https://newastro-debug.vercel.app/\"")
+        }
+
+
     }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
@@ -40,6 +51,9 @@ android {
     //ViewBinding
     buildFeatures{
         viewBinding = true
+
+        // Activamos buildConfig para las URL de la API
+        buildConfig = true
     }
 
 }
@@ -57,6 +71,12 @@ dependencies {
     //DaggerHilt
     implementation("com.google.dagger:hilt-android:2.48")
     kapt("com.google.dagger:hilt-compiler:2.48")
+
+    //Retrofit
+    implementation ("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation ("com.squareup.retrofit2:converter-gson:2.9.0")
+    implementation ("com.squareup.okhttp3:logging-interceptor:4.3.1")
+
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)

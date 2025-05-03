@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-permission android:name="android.permission.INTERNET"/>
+
+<!-- //DEBUG, le cambiamos el nombre a nuestra APP android:label="@string/facuname" -->
     <application
         android:name=".HoroscApp"
         android:allowBackup="true"
