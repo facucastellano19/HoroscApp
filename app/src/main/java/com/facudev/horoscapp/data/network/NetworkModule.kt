@@ -1,6 +1,5 @@
 package com.facudev.horoscapp.data.network
 
-import androidx.core.os.BuildCompat
 import com.facudev.horoscapp.BuildConfig.BASE_URL
 import com.facudev.horoscapp.data.RepositoryImpl
 import com.facudev.horoscapp.data.core.interceptors.AuthInterceptor
