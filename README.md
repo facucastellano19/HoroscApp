@@ -36,9 +36,6 @@ Este proyecto fue realizado con fines educativos. Estoy en formación como desar
 
 ## 👨‍💻 Autor
 
-**Facu Dev**  
-Estudiante trainee en Android Development
+**Facundo Castellano**  
 
----
 
-> Gracias por visitar el repositorio. Cualquier feedback es bienvenido 🙌
