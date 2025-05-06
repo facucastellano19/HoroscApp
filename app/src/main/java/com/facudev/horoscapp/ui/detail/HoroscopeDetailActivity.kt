@@ -45,7 +45,7 @@ class HoroscopeDetailActivity : AppCompatActivity() {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
                 horoscopeDetailViewModel.state.collect {
                     when (it) {
-                        //Aca puedo hacer lo que quiera por cada estado
+
                         is HoroscopeDetailState.Error -> errorState()
                         HoroscopeDetailState.Loading -> loadingState()
                         is HoroscopeDetailState.Success -> successState(it)
@@ -68,7 +68,6 @@ class HoroscopeDetailActivity : AppCompatActivity() {
         binding.tvTitle.text = state.sign
         binding.tvBody.text = state.prediction
 
-        //Imagenes
         val image = when(state.horoscopeModel){
             Aries -> R.drawable.detail_aries
             Taurus -> R.drawable.detail_taurus

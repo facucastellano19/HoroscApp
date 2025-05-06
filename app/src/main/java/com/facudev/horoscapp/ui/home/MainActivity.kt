@@ -29,9 +29,7 @@ class MainActivity : AppCompatActivity() {
         initNavigation()
     }
 
-    // Logica para barra de navegacion entre pantallas
     private fun initNavigation() {
-        // AS = es para castearlo
         val navHost = supportFragmentManager.findFragmentById(R.id.fragmentContainerView) as NavHostFragment
         navController = navHost.navController
         binding.bottomNavView.setupWithNavController(navController)

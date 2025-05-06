@@ -25,13 +25,10 @@ import javax.inject.Inject
 @AndroidEntryPoint
 class LuckFragment : Fragment() {
 
-    //Binding en los fragment
     private var _binding: FragmentLuckBinding? = null
 
-    //El var _binding original(que se puede modificar/romper) solo se puede llamar a traves de val binding
     private val binding get() = _binding!!
 
-    // Inyectamos el provider en la activity con DaggerHilt
     @Inject
     lateinit var randomCardProvider: RandomCardProvider
 
@@ -69,12 +66,10 @@ class LuckFragment : Fragment() {
 
 
     private fun InitListener() {
-        //binding.ivRoulette.setOnClickListener { spinRoulette() }
         binding.ivRoulette.setOnTouchListener(object : OnSwipeTouchListener(requireContext()){
             override fun onSwipeRight() {
                 spinRoulette()
             }
-
             override fun onSwipeLeft() {
                 spinRoulette()
             }

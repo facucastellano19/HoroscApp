@@ -25,7 +25,6 @@
 
     </FrameLayout>
 
-    <!-- Configuracion fragment content view -->
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fragmentContainerView"
         android:name="androidx.navigation.fragment.NavHostFragment"

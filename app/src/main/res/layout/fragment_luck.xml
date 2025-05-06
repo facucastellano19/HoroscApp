@@ -28,7 +28,6 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
-        <!--    Si esta invisible el recurso queda pre cargado-->
         <ImageView
             android:id="@+id/reverse"
             android:layout_width="60dp"
@@ -54,7 +53,6 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:visibility="visible">
 
-        <!--Da igual el telefono, siempre ocupa un 60% de la pantalla por el constraint height-->
         <ImageView
             android:id="@+id/ivLuckyCard"
             android:layout_width="0dp"
@@ -62,9 +60,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHeight_percent="0.6"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-
-            />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/tvLucky"

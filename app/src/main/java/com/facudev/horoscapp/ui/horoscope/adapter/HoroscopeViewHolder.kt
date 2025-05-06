@@ -15,22 +15,21 @@ class HoroscopeViewHolder(view:View):RecyclerView.ViewHolder(view) {
         binding.ivHoroscope.setImageResource(horoscopeInfo.img)
         binding.tvTitle.text = context.getString(horoscopeInfo.name)
 
-        // Cuando pulse algo en la celda va a ejecutar{}
-        //Esto lo usamos en el fragment. InitRecyclerview
+
 
         binding.parent.setOnClickListener{
-            startRotationAnimation(binding.ivHoroscope, newLambda = { onItemSelected(horoscopeInfo)}) //2) Va a llamar otra funcion LAMBDA
-            //onItemSelected(horoscopeInfo)
+            startRotationAnimation(binding.ivHoroscope, newLambda = { onItemSelected(horoscopeInfo)})
+
         }
 
     }
 
     private fun startRotationAnimation(view:View, newLambda:()->Unit){
         view.animate().apply {
-            duration = 500 //En milisegundos
-            interpolator = LinearInterpolator() //define el camino de la animacion. Misma velocidad en todo momento
-            rotationBy(360f) //Rota sobre su propio punto. en 360 una vuelta entera
-            withEndAction { newLambda() } //1) Cuando se ejecute este funcion LAMBDA
+            duration = 500
+            interpolator = LinearInterpolator()
+            rotationBy(360f)
+            withEndAction { newLambda() }
             start()
         }
     }

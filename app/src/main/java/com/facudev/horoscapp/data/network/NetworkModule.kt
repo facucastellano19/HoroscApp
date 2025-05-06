@@ -1,8 +1,6 @@
 package com.facudev.horoscapp.data.network
 
-import com.facudev.horoscapp.BuildConfig.BASE_URL
 import com.facudev.horoscapp.data.RepositoryImpl
-import com.facudev.horoscapp.data.core.interceptors.AuthInterceptor
 import com.facudev.horoscapp.domain.Repository
 import dagger.Module
 import dagger.Provides
@@ -18,13 +16,12 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class) //MODULO
 object NetworkModule {
 
-    //Esto nos permite inyectar el objeto retrofit donde queramos
     @Provides
-    @Singleton //Patron de diseño, una unica instancia de cada clase, para que no se cree infinitas veces el retrofit
+    @Singleton
     fun provideRetrofit(okHttpClient: OkHttpClient):Retrofit{
         return Retrofit
             .Builder()
-            .baseUrl(BASE_URL)
+            .baseUrl("https://newastro.vercel.app/")
             .client(okHttpClient)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
@@ -32,12 +29,11 @@ object NetworkModule {
 
     @Provides
     @Singleton
-    fun provideOkHttpClient(authInterceptor: AuthInterceptor):OkHttpClient{
+    fun provideOkHttpClient():OkHttpClient{
         val interceptor = HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
         return OkHttpClient
             .Builder()
             .addInterceptor(interceptor)
-            .addInterceptor(authInterceptor)
             .build()
 
     }
@@ -47,7 +43,6 @@ object NetworkModule {
         return retrofit.create(HoroscopeApiService::class.java)
     }
 
-    //Cuando alguien llame a este repositorio, va a devolver un apiService y se pasa a RepositoryImpl
     @Provides
     fun providesRepository(apiService: HoroscopeApiService):Repository{
         return RepositoryImpl(apiService)

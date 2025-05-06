@@ -8,7 +8,7 @@ import com.facudev.horoscapp.domain.model.HoroscopeInfo
 
 class HoroscopeAdapter(
     private var horoscopeList: List<HoroscopeInfo> = emptyList(),
-    private val onItemSelected:(HoroscopeInfo)->Unit) :  //Funcion LAMBDA para sabes cual es el item pulsado
+    private val onItemSelected:(HoroscopeInfo)->Unit) :
     RecyclerView.Adapter<HoroscopeViewHolder>() {
 
     fun updateList(list: List<HoroscopeInfo>) {
@@ -23,13 +23,12 @@ class HoroscopeAdapter(
                 R.layout.item_horoscope,
                 parent,
                 false
-            ) //Que vamos a pintar? lo que tenemos aca
+            )
         )
     }
 
     override fun getItemCount() = horoscopeList.size
 
-    // Este metodo se encarga de decirle al viewHolder lo que tiene que pintar
     override fun onBindViewHolder(holder: HoroscopeViewHolder, position: Int) {
         holder.render(horoscopeList[position], onItemSelected)
     }

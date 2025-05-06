@@ -2,11 +2,6 @@ package com.facudev.horoscapp.domain.model
 
 import com.facudev.horoscapp.R
 
-//sealed class, clase sellada.
-//Es int porque le pasamos una referencia, no le paso directamente una imagen o un string name
-// R.drawable.ic_horoscope
-//Esta clase no sabe que hay fuera, solo kotlin
-
 sealed class HoroscopeInfo(val img: Int, val name: Int){
     data object Aries:HoroscopeInfo(R.drawable.aries, R.string.aries)
     data object Taurus: HoroscopeInfo(R.drawable.tauro, R.string.taurus)

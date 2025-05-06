@@ -16,30 +16,19 @@ android {
         targetSdk = 35
         versionCode = 1
         versionName = "1.0"
-
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner = "com.facudev.horoscapp.CustomTestRunner"
     }
 
     buildTypes {
-        getByName("release") {
+        release {
             isMinifyEnabled = false
-            isDebuggable = false //Si subo mi app y alguien se mete en el codigo no va a poder hacer debug
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
-            resValue("string", "facuname", "HoroscApp")
-
-            buildConfigField("String", "BASE_URL", "\"https://newastro.vercel.app/\"") //Sin \ al final se rompe
         }
-        getByName("debug"){
-            isDebuggable = true
-            resValue("string", "facuname", "[DEBUG] HoroscApp")
-            buildConfigField("String", "BASE_URL", "\"https://newastro.vercel.app/\"")
-        }
-
-
     }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
@@ -49,11 +38,8 @@ android {
     }
 
     //ViewBinding
-    buildFeatures{
+    buildFeatures {
         viewBinding = true
-
-        // Activamos buildConfig para las URL de la API
-        buildConfig = true
     }
 
 }
@@ -74,16 +60,16 @@ dependencies {
     kapt("com.google.dagger:hilt-compiler:2.48")
 
     //Retrofit
-    implementation ("com.squareup.retrofit2:retrofit:2.9.0")
-    implementation ("com.squareup.retrofit2:converter-gson:2.9.0")
-    implementation ("com.squareup.okhttp3:logging-interceptor:4.3.1")
+    implementation("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
+    implementation("com.squareup.okhttp3:logging-interceptor:4.3.1")
 
     //Camera X
-    implementation ("androidx.camera:camera-core:${cameraVersion}")
-    implementation ("androidx.camera:camera-camera2:${cameraVersion}")
-    implementation ("androidx.camera:camera-lifecycle:${cameraVersion}")
-    implementation ("androidx.camera:camera-view:${cameraVersion}")
-    implementation ("androidx.camera:camera-extensions:${cameraVersion}")
+    implementation("androidx.camera:camera-core:${cameraVersion}")
+    implementation("androidx.camera:camera-camera2:${cameraVersion}")
+    implementation("androidx.camera:camera-lifecycle:${cameraVersion}")
+    implementation("androidx.camera:camera-view:${cameraVersion}")
+    implementation("androidx.camera:camera-extensions:${cameraVersion}")
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
@@ -94,16 +80,18 @@ dependencies {
 
     //Unit Testing
     testImplementation(libs.junit)
-    testImplementation ("io.kotlintest:kotlintest-runner-junit5:3.4.2")
-    testImplementation ("io.mockk:mockk:1.12.3")
+    testImplementation("io.kotlintest:kotlintest-runner-junit5:3.4.2")
+    testImplementation("io.mockk:mockk:1.12.3")
 
 
     //UI Testing
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
     androidTestImplementation("androidx.test.espresso:espresso-contrib:3.5.1")
-    androidTestImplementation ("androidx.test.espresso:espresso-intents:3.4.0")
-    androidTestImplementation ("com.google.dagger:hilt-android-testing:2.48")
-    androidTestImplementation ("androidx.fragment:fragment-testing:1.6.1")
+    androidTestImplementation("androidx.test.espresso:espresso-intents:3.4.0")
+    androidTestImplementation("com.google.dagger:hilt-android-testing:2.48")
+    androidTestImplementation("androidx.fragment:fragment-testing:1.6.1")
     kaptAndroidTest("com.google.dagger:hilt-android-compiler:2.48")
+
 }
+
